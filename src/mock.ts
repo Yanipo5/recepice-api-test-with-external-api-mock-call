@@ -31,14 +31,14 @@ export function mock(
       // Handle error input.
       process.stderr.on("data", (msg: Buffer) => {
          const str = Buffer.from(msg).toString();
-         if (!inspector.url() && str.includes("Debugger attached.")) console.error(`mock stderr: ${str}`);
+         if (!(inspector.url() && str.includes("Debugger attached."))) console.error(`mock stderr: ${str}`);
       });
 
       // Resolve the promise.
       process.stdout.on("data", (msg: Buffer) => {
          const str = Buffer.from(msg).toString();
          if (str === "MOCK_LISTENING") resolve(process);
-         else console.info(`mock stderr: ${str}`);
+         else console.log(`mock stderr: ${str}`);
       });
    });
 }
