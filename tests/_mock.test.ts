@@ -8,9 +8,9 @@ const axios = _axios.create({ baseURL: `http://localhost:${PORT}` });
 
 describe("Integration Tests", () => {
    test("Diffrent response", async () => {
-      _process = await mock([{ response: "POC2 payload" }]);
+      _process = await mock([{ response: "mock diffrent payload" }]);
       const res = await axios("/");
-      expect(res.data).toBe("POC2 payload");
+      expect(res.data).toBe("mock diffrent payload");
    });
 
    test("Diffrent port", async () => {
@@ -20,8 +20,8 @@ describe("Integration Tests", () => {
    });
 
    test("Diffrent url", async () => {
-      _process = await mock([{ url: "/poc/dif_url" }]);
-      const res = await axios("/poc/dif_url");
+      _process = await mock([{ url: "/api/diff_url" }]);
+      const res = await axios("/api/diff_url");
       expect(res.data).toBe("mock response from mockApp.js");
    });
 
