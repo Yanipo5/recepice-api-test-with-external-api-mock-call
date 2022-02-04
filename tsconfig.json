@@ -1,0 +1,13 @@
+{
+   "files": ["utils/mockApp.js"],
+   "include": ["utils/**/*"],
+   "compilerOptions": {
+      "declaration": true,
+      "allowJs": true,
+      "esModuleInterop": true,
+      "outDir": "dist"
+   },
+   "ts-node": {
+      "transpileOnly": true // make it faster, but errors will show only in VS-code.
+   }
+}
