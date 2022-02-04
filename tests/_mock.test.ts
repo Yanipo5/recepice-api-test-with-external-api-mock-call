@@ -1,6 +1,6 @@
 import _axios from 'axios';
 import { ChildProcess } from 'child_process';
-import { mock } from '../utils/mock';
+import { mock } from '../src/mock';
 
 let _process: ChildProcess = null;
 const PORT = 12999;

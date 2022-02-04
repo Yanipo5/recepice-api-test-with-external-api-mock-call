@@ -4,9 +4,10 @@
    "description": "Test api which call an external api while mocking the external api.",
    "main": "dist/index.ts",
    "scripts": {
-      "app": "npx ts-node src/index.ts",
+      "app": "npx ts-node tests/app.ts",
       "test": "jest",
-      "compile": "tsc"
+      "compile": "tsc",
+      "postinstall": "tsc"
    },
    "author": "Yaniv Peretz",
    "license": "MIT",

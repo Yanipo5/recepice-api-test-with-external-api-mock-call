@@ -1,6 +1,6 @@
 {
-   "files": ["utils/mockApp.js"],
-   "include": ["utils/**/*"],
+   "files": ["src/mockApp.js"],
+   "include": ["src/**/*"],
    "compilerOptions": {
       "declaration": true,
       "allowJs": true,
