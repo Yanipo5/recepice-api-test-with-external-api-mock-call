@@ -8,6 +8,7 @@ import { server } from '../src/app';
  * The 3rd-party response is mocked via the mock function.
  * This example shows how the server response is effected by the mock.
  */
+
 let _process: ChildProcess;
 const appPort = Number(process.env.PORT) || 12990;
 const mockPort = 12999;
