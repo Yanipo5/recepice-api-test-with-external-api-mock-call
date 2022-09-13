@@ -1,28 +1,19 @@
-import _axios from "axios";
-import { ChildProcess } from "child_process";
-import { mock } from "../src/mock";
+import _axios from 'axios';
+import { ChildProcess } from 'child_process';
+import { mock } from '../src/mock';
 
-let _process: ChildProcess = null;
-const PORT = 12990;
-const axios = _axios.create({ baseURL: `http://localhost:${PORT}` });
+let _process: ChildProcess;
+const port = 12990;
+const axios = _axios.create({ baseURL: `http://localhost:${port}` });
 
-describe("Integration Tests", () => {
-   test("Regular API Test (no mock required)", async () => {
-      const res = await axios("/api/");
-      expect(res.data).toBe("Hello from server");
-   });
+describe('Integration Tests', () => {
+  test('Api with 3rd party call accepted', async () => {
+    const response = 'Hello from server, your request was accepted with 3rd party.';
+    const url = '/api/with-3rd-party';
+    _process = await mock([{ response, url }], { port });
+    const res = await axios(url);
+    expect(res.data).toBe(response);
+  });
 
-   test("Api with 3rd party call accepted", async () => {
-      _process = await mock([{ response: true }]);
-      const res = await axios("/api/with-3rd-party");
-      expect(res.data).toBe("Hello from server, your request was accepted with 3rd party.");
-   });
-
-   test("Api with 3rd party call rejected", async () => {
-      _process = await mock([{ response: false }]);
-      const res = await axios("/api/with-3rd-party");
-      expect(res.data).toBe("Hello from server, your request was rejected with 3rd party.");
-   });
-
-   afterEach(() => _process?.kill());
+  afterEach(() => _process?.kill());
 });
